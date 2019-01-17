@@ -24,6 +24,7 @@ void MainWindow::on_pushButton_clicked()
 
 //    Cara kedua yaitu
 //    Membuat instance baru, cara direkomendasikan dalam beberapa kasus
+    hide(); // ini kalau mau di hide mainwindow nya ketika di secondDialog muncul
     secondDialog = new second_Dialog(this);
     secondDialog->show();
 }
