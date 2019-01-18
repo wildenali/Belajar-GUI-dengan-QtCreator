@@ -42,7 +42,6 @@ public:
     QLabel *label_2;
     QLineEdit *lineEdit_password;
     QPushButton *pushButton_Login;
-    QLabel *label_pic;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -51,12 +50,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(457, 280);
+        MainWindow->resize(400, 224);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(170, 20, 251, 161));
+        groupBox->setGeometry(QRect(70, 0, 251, 161));
         verticalLayout_2 = new QVBoxLayout(groupBox);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -104,13 +103,10 @@ public:
 
         verticalLayout_2->addWidget(pushButton_Login);
 
-        label_pic = new QLabel(centralWidget);
-        label_pic->setObjectName(QStringLiteral("label_pic"));
-        label_pic->setGeometry(QRect(10, 20, 131, 151));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 457, 25));
+        menuBar->setGeometry(QRect(0, 0, 400, 25));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -131,7 +127,6 @@ public:
         label->setText(QApplication::translate("MainWindow", "Username", 0));
         label_2->setText(QApplication::translate("MainWindow", "Password", 0));
         pushButton_Login->setText(QApplication::translate("MainWindow", "Masuk Doong", 0));
-        label_pic->setText(QString());
     } // retranslateUi
 
 };
