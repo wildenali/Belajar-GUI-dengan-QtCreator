@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../10_Login_App_StatusBar/second_dialog.h"
+#include "../../11_Login_App_Resource_File/11_Login_App_Resource_File/second_dialog.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
