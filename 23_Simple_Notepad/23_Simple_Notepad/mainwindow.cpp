@@ -147,7 +147,7 @@ void MainWindow::on_actionBackground_Color_Edit_Text_triggered()
 void MainWindow::on_actionPrint_triggered()
 {
     QPrinter printer;
-    printer.setPrinterName("print aaah");
+    printer.setPrinterName("print aaaAh");
     QPrintDialog dialog(&printer, this);
     if(dialog.exec() == QDialog::Rejected)  return;
     ui->textEdit->print(&printer);
