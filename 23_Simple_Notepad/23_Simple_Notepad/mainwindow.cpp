@@ -4,6 +4,12 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QFontDialog>
+#include <QFont>
+#include <QColorDialog>
+#include <QColor>
+#include <QPrinter>
+#include <QPrintDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -101,4 +107,48 @@ void MainWindow::on_actionAbout_ini_triggered()
     about_text += "dan ini paragraf kedua\n";
     about_text += "(C) titik (R)";
     QMessageBox::about(this, "About", about_text);
+}
+
+void MainWindow::on_actionFont_triggered()
+{
+    bool ok;
+    QFont font = QFontDialog::getFont(&ok, this);
+    if(ok) {
+        ui->textEdit->setFont(font);
+    } else {
+        return;
+    }
+}
+
+void MainWindow::on_actionColor_triggered()
+{
+    QColor color = QColorDialog::getColor(Qt::black, this, "Pilih Warna");
+    if(color.isValid()) {
+        ui->textEdit->setTextColor(color);
+    }
+}
+
+void MainWindow::on_actionBackground_Color_triggered()
+{
+    QColor color = QColorDialog::getColor(Qt::black, this, "Pilih Warna");
+    if(color.isValid()) {
+        ui->textEdit->setTextBackgroundColor(color);
+    }
+}
+
+void MainWindow::on_actionBackground_Color_Edit_Text_triggered()
+{
+    QColor color = QColorDialog::getColor(Qt::blue, this, "Pilih Warna");
+    if(color.isValid()) {
+        ui->textEdit->setPalette(QPalette(color));
+    }
+}
+
+void MainWindow::on_actionPrint_triggered()
+{
+    QPrinter printer;
+    printer.setPrinterName("print aaah");
+    QPrintDialog dialog(&printer, this);
+    if(dialog.exec() == QDialog::Rejected)  return;
+    ui->textEdit->print(&printer);
 }
