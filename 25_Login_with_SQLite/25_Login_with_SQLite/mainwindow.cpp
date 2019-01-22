@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QSqlDatabase mydb;
     mydb = QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName("myDatabaseLogin");
+    mydb.setDatabaseName("/home/password-sari/Documents/wildenali github/Belajar-GUI-dengan-QtCreator/25_Login_with_SQLite/myDatabaseLogin");
 
     if(mydb.open()) {
         ui->label->setText("BERHASIL bukea database");
@@ -25,4 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+
 }
