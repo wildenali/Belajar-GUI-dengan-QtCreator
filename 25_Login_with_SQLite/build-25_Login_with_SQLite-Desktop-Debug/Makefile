@@ -49,10 +49,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../25_Login_with_SQLite/main.cpp \
-		../25_Login_with_SQLite/mainwindow.cpp moc_mainwindow.cpp
+		../25_Login_with_SQLite/mainwindow.cpp \
+		../25_Login_with_SQLite/employeeinfo.cpp moc_mainwindow.cpp \
+		moc_employeeinfo.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		employeeinfo.o \
+		moc_mainwindow.o \
+		moc_employeeinfo.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -140,8 +144,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../25_Login_with_SQLite/25_Login_with_SQLite.pro ../25_Login_with_SQLite/mainwindow.h ../25_Login_with_SQLite/main.cpp \
-		../25_Login_with_SQLite/mainwindow.cpp
+		../25_Login_with_SQLite/25_Login_with_SQLite.pro ../25_Login_with_SQLite/mainwindow.h \
+		../25_Login_with_SQLite/employeeinfo.h ../25_Login_with_SQLite/main.cpp \
+		../25_Login_with_SQLite/mainwindow.cpp \
+		../25_Login_with_SQLite/employeeinfo.cpp
 QMAKE_TARGET  = 25_Login_with_SQLite
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = 25_Login_with_SQLite
@@ -169,7 +175,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_employeeinfo.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../25_Login_with_SQLite/25_Login_with_SQLite.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -371,9 +377,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../25_Login_with_SQLite/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../25_Login_with_SQLite/main.cpp ../25_Login_with_SQLite/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../25_Login_with_SQLite/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../25_Login_with_SQLite/mainwindow.h ../25_Login_with_SQLite/employeeinfo.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../25_Login_with_SQLite/main.cpp ../25_Login_with_SQLite/mainwindow.cpp ../25_Login_with_SQLite/employeeinfo.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../25_Login_with_SQLite/mainwindow.ui ../25_Login_with_SQLite/employeeinfo.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -396,19 +402,26 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_employeeinfo.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
-moc_mainwindow.cpp: ../25_Login_with_SQLite/mainwindow.h
+	-$(DEL_FILE) moc_mainwindow.cpp moc_employeeinfo.cpp
+moc_mainwindow.cpp: ../25_Login_with_SQLite/employeeinfo.h \
+		../25_Login_with_SQLite/mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I'/home/password-sari/Documents/wildenali github/Belajar-GUI-dengan-QtCreator/25_Login_with_SQLite/25_Login_with_SQLite' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../25_Login_with_SQLite/mainwindow.h -o moc_mainwindow.cpp
+
+moc_employeeinfo.cpp: ../25_Login_with_SQLite/employeeinfo.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I'/home/password-sari/Documents/wildenali github/Belajar-GUI-dengan-QtCreator/25_Login_with_SQLite/25_Login_with_SQLite' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../25_Login_with_SQLite/employeeinfo.h -o moc_employeeinfo.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_employeeinfo.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_employeeinfo.h
 ui_mainwindow.h: ../25_Login_with_SQLite/mainwindow.ui
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../25_Login_with_SQLite/mainwindow.ui -o ui_mainwindow.h
+
+ui_employeeinfo.h: ../25_Login_with_SQLite/employeeinfo.ui
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../25_Login_with_SQLite/employeeinfo.ui -o ui_employeeinfo.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -420,15 +433,24 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
-main.o: ../25_Login_with_SQLite/main.cpp ../25_Login_with_SQLite/mainwindow.h
+main.o: ../25_Login_with_SQLite/main.cpp ../25_Login_with_SQLite/mainwindow.h \
+		../25_Login_with_SQLite/employeeinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../25_Login_with_SQLite/main.cpp
 
 mainwindow.o: ../25_Login_with_SQLite/mainwindow.cpp ../25_Login_with_SQLite/mainwindow.h \
+		../25_Login_with_SQLite/employeeinfo.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../25_Login_with_SQLite/mainwindow.cpp
 
+employeeinfo.o: ../25_Login_with_SQLite/employeeinfo.cpp ../25_Login_with_SQLite/employeeinfo.h \
+		ui_employeeinfo.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o employeeinfo.o ../25_Login_with_SQLite/employeeinfo.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_employeeinfo.o: moc_employeeinfo.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_employeeinfo.o moc_employeeinfo.cpp
 
 ####### Install
 

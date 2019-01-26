@@ -19,8 +19,8 @@
      <rect>
       <x>100</x>
       <y>180</y>
-      <width>191</width>
-      <height>21</height>
+      <width>251</width>
+      <height>17</height>
      </rect>
     </property>
     <property name="text">
@@ -33,37 +33,71 @@
       <x>80</x>
       <y>0</y>
       <width>251</width>
-      <height>141</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="title">
      <string>Login</string>
     </property>
-    <widget class="QLabel" name="label_2">
+    <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>67</width>
-       <height>17</height>
+       <x>70</x>
+       <y>120</y>
+       <width>99</width>
+       <height>27</height>
       </rect>
      </property>
      <property name="text">
-      <string>Nama</string>
+      <string>Login</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_3">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>80</y>
-       <width>67</width>
-       <height>17</height>
+       <y>30</y>
+       <width>223</width>
+       <height>64</height>
       </rect>
      </property>
-     <property name="text">
-      <string>Password</string>
-     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Nama</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Password</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLineEdit" name="lineEdit_Nama"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_Password">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>
