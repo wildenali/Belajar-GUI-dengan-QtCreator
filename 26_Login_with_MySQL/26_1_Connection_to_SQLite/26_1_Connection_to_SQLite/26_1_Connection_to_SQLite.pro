@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-01-22T21:17:27
+# Project created by QtCreator 2019-01-26T21:31:54
 #
 #-------------------------------------------------
 
@@ -8,16 +8,13 @@ QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = 25_Login_with_SQLite
+TARGET = 26_1_Connection_to_SQLite
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    employeeinfo.cpp
+        login.cpp
 
-HEADERS  += mainwindow.h \
-    employeeinfo.h
+HEADERS  += login.h
 
-FORMS    += mainwindow.ui \
-    employeeinfo.ui
+FORMS    += login.ui
