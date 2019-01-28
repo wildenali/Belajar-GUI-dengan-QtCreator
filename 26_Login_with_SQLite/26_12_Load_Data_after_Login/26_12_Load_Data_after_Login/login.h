@@ -45,6 +45,8 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_lineEdit_Password_returnPressed();
+
 private:
     Ui::Login *ui;
 };

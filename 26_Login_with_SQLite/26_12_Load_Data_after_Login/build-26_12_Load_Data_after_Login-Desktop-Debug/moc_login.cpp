@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../26_11_Select_from_ListView_TableView_show_to_LineEdit/login.h"
+#include "../26_12_Load_Data_after_Login/login.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Login_t {
-    QByteArrayData data[3];
-    char stringdata0[29];
+    QByteArrayData data[4];
+    char stringdata0[64];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -31,10 +31,12 @@ static const qt_meta_stringdata_Login_t qt_meta_stringdata_Login = {
     {
 QT_MOC_LITERAL(0, 0, 5), // "Login"
 QT_MOC_LITERAL(1, 6, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(2, 28, 0) // ""
+QT_MOC_LITERAL(2, 28, 0), // ""
+QT_MOC_LITERAL(3, 29, 34) // "on_lineEdit_Password_returnPr..."
 
     },
-    "Login\0on_pushButton_clicked\0"
+    "Login\0on_pushButton_clicked\0\0"
+    "on_lineEdit_Password_returnPressed"
 };
 #undef QT_MOC_LITERAL
 
@@ -44,7 +46,7 @@ static const uint qt_meta_data_Login[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -52,9 +54,11 @@ static const uint qt_meta_data_Login[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   19,    2, 0x08 /* Private */,
+       1,    0,   24,    2, 0x08 /* Private */,
+       3,    0,   25,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -67,6 +71,7 @@ void Login::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
+        case 1: _t->on_lineEdit_Password_returnPressed(); break;
         default: ;
         }
     }
@@ -98,13 +103,13 @@ int Login::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
